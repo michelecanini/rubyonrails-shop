@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'product_types/index'
   get 'product_types/show'
   get 'product_types/new'

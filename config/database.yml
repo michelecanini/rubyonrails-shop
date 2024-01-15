@@ -23,7 +23,7 @@ development:
   <<: *default
   database: rubyonrails_shop_development
   username: postgres
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  password: <%= Rails.application.credentials.dig(:postgres_password) %>
   host: localhost
   port: 5432
 

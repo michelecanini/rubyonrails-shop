@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  include RackSessionsFix
   respond_to :json
 
   private  
@@ -6,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(current_user, _opts = {})
     render json: {
       status: { 
-        code: 200, message: 'Logged in successfully.',
+        code: 200, message: 'Accesso effettuato con successo.',
         data: { user: 
         UserSerializer.new(current_user).serializable_hash[:data]
         [:attributes] }

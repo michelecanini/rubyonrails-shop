@@ -6,7 +6,7 @@ const from = "node_modules/bootstrap-italia/dist/";
 const to = path.join(__dirname, "./public/bootstrap-italia/dist");
 
 const nextConfig = {
-  reactStrictMode: true
+  reactStrictMode: true,
 }
 
 module.exports = {
@@ -19,6 +19,10 @@ module.exports = {
         })
       );
     }
+    // homepage
+    config.resolve.alias['pages/index'] = path.join(__dirname, 'app/page');
+    // pages
+    config.resolve.alias['pages'] = path.join(__dirname, 'app');
     return config;
   },
 }

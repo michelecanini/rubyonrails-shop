@@ -6,19 +6,26 @@ import { api } from '../services/index';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string>('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const response = await api.post('/login', { username, password });
-      
-      const token = response.data.token;
+
+      const { token } = response.data;
       localStorage.setItem('jwtToken', token);
 
-      window.location.href = '/';
-    } catch (error) {
+      window.location.href = '/admin';
+    } catch (error: any) {
       console.error('Errore durante il login:', error);
+
+      if (error.response && error.response.status === 401) {
+        setError('Credenziali non valide. Riprova.');
+      } else {
+        setError('Errore durante il login. Riprova più tardi.');
+      }
     }
   };
 
@@ -49,6 +56,8 @@ const Login = () => {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
+
+        {error && <div className="alert alert-danger mt-2">{error}</div>}
 
         <div className="checkbox mb-4 mt-4">
           <label>

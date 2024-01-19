@@ -26,10 +26,14 @@ const Login = () => {
       console.log('Dati della risposta:', response.data);
       console.log('Headers della risposta:', response.headers);
 
-      const { token } = response.data;
-      localStorage.setItem('jwtToken', token);
+      const token = response.headers.authorization;
 
-      console.log('Token salvato:', localStorage.getItem('jwtToken'));
+      if (token) {
+        localStorage.setItem('jwtToken', token);
+        console.log('Token salvato:', localStorage.getItem('jwtToken'));
+      } else {
+        console.error('Token non presente nella risposta del server');
+      }
 
       window.location.href = '/admin';
     } catch (error: any) {

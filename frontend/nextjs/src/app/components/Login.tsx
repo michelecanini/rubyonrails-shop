@@ -1,7 +1,8 @@
 "use client"
+//import { api } from '../services/index';
 
 import React, { useState } from 'react';
-import { api } from '../services/index';
+import axios from 'axios';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -12,10 +13,23 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await api.post('/login', { username, password });
+      console.log('Invio della richiesta di login...');
+
+      const response = await axios.post('http://localhost:3001/login', {
+        user: {
+          username, 
+          password
+        }
+      });
+
+      console.log('Risposta completa dalla richiesta di login:', response);
+      console.log('Dati della risposta:', response.data);
+      console.log('Headers della risposta:', response.headers);
 
       const { token } = response.data;
       localStorage.setItem('jwtToken', token);
+
+      console.log('Token salvato:', localStorage.getItem('jwtToken'));
 
       window.location.href = '/admin';
     } catch (error: any) {

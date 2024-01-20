@@ -8,6 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,12 +32,15 @@ const Login = () => {
       if (token) {
         localStorage.setItem('jwtToken', token);
         console.log('Token salvato:', localStorage.getItem('jwtToken'));
+        setSuccessMessage('Accesso effettuato con successo!');
       } else {
         console.error('Token non presente nella risposta del server');
       }
 
-      window.location.href = '/admin';
-    } catch (error: any) {
+      setTimeout(() => {
+        window.location.href = '/admin';
+      }, 1000);
+      } catch (error: any) {
       console.error('Errore durante il login:', error);
 
       if (error.response && error.response.status === 401) {
@@ -76,13 +80,14 @@ const Login = () => {
         </div>
 
         {error && <div className="alert alert-danger mt-2">{error}</div>}
+        {successMessage && <div className="alert alert-success mt-2">{successMessage}</div>}
 
         <div className="checkbox mb-4 mt-4">
           <label>
             <input type="checkbox" value="remember-me" /> Ricordami
           </label>
         </div>
-        <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button className="w-100 btn btn-lg btn-primary" type="submit">Accedi</button>
       </form>
     </div>
   );

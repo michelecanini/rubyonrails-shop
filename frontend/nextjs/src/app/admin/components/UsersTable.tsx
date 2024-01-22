@@ -32,35 +32,35 @@ const UsersTable: React.FC = () => {
     <div className="container">
       <div className="row">
         <div className="col-12 col-md-8 offset-md-2">
-        <div className="table-responsive">
-          <table className="table text-white rounded border border-white">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Data di Nascita</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={user.id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>{user.first_name}</td>
-                  <td>{user.last_name}</td>
-                  <td>{user.date_of_birth}</td>
+          <div className="table-responsive">
+            <table className="table table-primary table-control table-control-lg rounded border">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Cognome</th>
+                  <th scope="col">Data di Nascita</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr key={user.id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                    <td>{user.first_name}</td>
+                    <td>{user.last_name}</td>
+                    <td>{user.date_of_birth}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

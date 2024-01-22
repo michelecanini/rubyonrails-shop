@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
         <div className="link-list-wrapper">
           <ul className="link-list">
             <li>
-              <h3>Menu</h3>
+              <h3 className="text-white">Menu</h3>
             </li>
             <li>
           <a className="list-item medium active left-icon" href="#">

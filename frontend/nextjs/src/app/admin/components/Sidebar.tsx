@@ -12,14 +12,14 @@ const Sidebar: React.FC = () => {
             <li>
           <a className="list-item medium active left-icon" href="#">
             <span className="list-item-title-icon-wrapper">
-              <svg className="icon icon-sm icon-primary" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-star-outline"></use></svg><span>Link lista 1 (attivo)</span>
+              <svg className="icon icon-sm icon-primary" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-star-outline"></use></svg><span>Utenti</span>
             </span>
           </a>
         </li>
         <li>
           <a className="list-item medium left-icon" href="#">
             <span className="list-item-title-icon-wrapper">
-              <svg className="icon icon-sm icon-primary" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-star-outline"></use></svg><span>Link lista 3</span>
+              <svg className="icon icon-sm icon-primary" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-star-outline"></use></svg><span>Inventario</span>
             </span>
           </a>
         </li>
